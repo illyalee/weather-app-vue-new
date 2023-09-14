@@ -13,6 +13,8 @@ export default {
 <!-- хз пока   -->
     <button @click="$emit('deleteLocation')">delete</button>
   </div>
+  <div>New</div>
+
 </template>
 
 <style>
