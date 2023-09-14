@@ -14,6 +14,7 @@ export default {
     <button @click="$emit('deleteLocation')">delete</button>
   </div>
   <div>New</div>
+  <div>222New2222</div>
 
 </template>
 
