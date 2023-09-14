@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from "@/components/SearchForm.vue";
 import LocationItem from "@/components/Location.vue";
 export default {
   components: {SearchInput, LocationItem},
