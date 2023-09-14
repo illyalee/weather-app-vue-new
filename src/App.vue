@@ -54,28 +54,6 @@ export default {
     }
   },
   methods: {
-  async getWeather() {
-    const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
-    const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
-    const url = `${serverUrl}?q=${this.city}&appid=${apiKey}&units=metric`;
-    const f = await fetch(url);
-    const data = await f.json();
-    console.log(data)
-
-    if (data.cod !== 200) {
-    alert('city not found')
-      this.city = ''
-      return;
-    }
-      this.currentLocation = this.city;
-      this.weather.temp = Math.round(data.main.temp) + ' °C';
-      this.weather.feels_like = Math.round(data.main.feels_like) + ' °C';
-      this.weather.description = data.weather[0].description;
-      this.weather.sunrise = data.sys.sunrise;
-      this.weather.sunset = data.sys.sunset;
-      this.weather.imageURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-      this.city = ''
-    },
     addNewLocation() {
       let isCityInFavoriteList = this.favoriteLocations.find((city) => this.currentLocation === city.name)
       if (!isCityInFavoriteList && this.currentLocation.length) {
