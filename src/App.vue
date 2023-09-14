@@ -36,33 +36,48 @@ export default {
   components: {SearchInput, LocationItem},
   data() {
     return {
-      city: 'New York',
-      currentLocation: '',
+      city: null,
       weather: {
+        currentLocation: null,
         temp: null,
         feels_like: null,
         description: null,
         sunrise: null,
         sunset: null,
-        imageURL: ''
+        imageURL: null
       },
-      favoriteLocations: [
-        {name: 'Moscov'},
+      locations: [
+        {name: 'Moscow'},
         {name: 'Bali'},
         {name: 'London'}
       ]
     }
   },
   methods: {
-    addNewLocation() {
-      let isCityInFavoriteList = this.favoriteLocations.find((city) => this.currentLocation === city.name)
-      if (!isCityInFavoriteList && this.currentLocation.length) {
-      this.favoriteLocations.push({name: this.currentLocation})
-    }
+    addLocation() {
+      const isCityInFavoriteList = this.locations.find((city) => this.weather.currentLocation.toLowerCase() === city.name.toLowerCase());
+      if (!isCityInFavoriteList) {
+        this.locations.push({name: this.weather.currentLocation})
+      }
     },
     deleteLocation(city) {
-      this.favoriteLocations = this.favoriteLocations.filter((c) => city !== c.name)
+      this.locations = this.locations.filter((c) => city.toLowerCase() !== c.name.toLowerCase())
+    },
+    async showWeather(city) {
+      const data = await getWeather(city)
+      if (data) {
+        this.weather = {...data};
+        this.clearSearch()
+      }
+    },
+    clearSearch() {
+      this.city = ''
     }
+  },
+  async mounted() {
+    const defaultCity = 'New York'
+    const data = await getWeather(defaultCity)
+    this.weather = {...data};
   }
 }
 
