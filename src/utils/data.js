@@ -18,5 +18,5 @@ export const getWeather = async function (city) {
 
         return weatherData;
     }
-    return;
+    return false;
 }

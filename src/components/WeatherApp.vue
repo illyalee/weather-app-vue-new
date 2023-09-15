@@ -38,10 +38,14 @@ export default {
       this.locations = this.locations.filter((c) => city.toLowerCase() !== c.name.toLowerCase())
     },
     async showWeather() {
-      const data = await getWeather(this.city)
-      if (data) {
-        this.weather = {...data};
-        this.clearSearch();
+      if(this.city.length) {
+        const data = await getWeather(this.city)
+        if (data) {
+          this.weather = {...data};
+          this.clearSearch();
+        } else if (data === false) {
+          alert('Wrong city.')
+        }
       }
     },
     clearSearch() {
