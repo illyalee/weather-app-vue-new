@@ -36,8 +36,8 @@ export default {
     deleteLocation(city) {
       this.locations = this.locations.filter((c) => city.toLowerCase() !== c.name.toLowerCase())
     },
-    async showWeather(city) {
-      const data = await getWeather(city)
+    async showWeather() {
+      const data = await getWeather(this.city)
       if (data) {
         this.weather = {...data};
         this.clearSearch()
