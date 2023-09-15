@@ -9,6 +9,7 @@ export default {
   components: {LocationsList, CurrentLocation, SearchForm},
   data() {
     return {
+      defaultCity: "New York",
       city: null,
       weather: {
         currentLocation: null,
@@ -40,17 +41,19 @@ export default {
       const data = await getWeather(this.city)
       if (data) {
         this.weather = {...data};
-        this.clearSearch()
+        this.clearSearch();
       }
     },
     clearSearch() {
-      this.city = ''
+      this.city = '';
+    },
+    async getDefaultCity() {
+      const data = await getWeather(this.defaultCity);
+      this.weather = {...data};
     }
   },
-  async mounted() {
-    const defaultCity = 'New York'
-    const data = await getWeather(defaultCity)
-    this.weather = {...data};
+   mounted() {
+    this.getDefaultCity();
   }
 }
 </script>
