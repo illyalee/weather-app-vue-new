@@ -7,15 +7,14 @@ export default {
     }
   },
   emits: ['deleteLocationByName'],
-  name: "LocationItem",
-
+  name: "LocationItem"
 }
 </script>
 
 <template>
   <div class="favorites">
     <div class="location">{{ name }}</div>
-    <button class="delete" @click="$emit('deleteLocationByName', name)">delete</button>
+    <button class="delete" @click="$emit('deleteLocationByName')">delete</button>
   </div>
 </template>
 

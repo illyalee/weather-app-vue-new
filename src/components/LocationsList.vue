@@ -22,7 +22,7 @@ export default {
 <template>
   <div class="locations">
     <LocationItem :name="location.name" v-for="location in locations" :key="location.name"
-                  @deleteLocationByName="deleteLocationByName"/>
+                  @deleteLocationByName="deleteLocationByName(location.name)"/>
   </div>
 </template>
 
