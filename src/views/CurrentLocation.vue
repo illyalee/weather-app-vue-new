@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    weather: Object
+    weather: {type: Object, required: true}
   },
   emits: ['addLocation'],
   name: "CurrentLocation"
@@ -36,9 +36,9 @@ export default {
 
 
 .now_screen {
-  height: 100%;
   padding: 15px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
