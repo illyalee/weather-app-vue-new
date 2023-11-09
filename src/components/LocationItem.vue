@@ -13,8 +13,8 @@ export default {
 
 <template>
   <div class="favorites">
-    <div class="location" @click="$emit('showWeatherByName')">{{ name }}</div>
-    <button class="delete" @click="$emit('deleteLocationByName')">delete</button>
+    <div class="location" @click="$emit('showWeatherByName', name)">{{ name }}</div>
+    <button class="delete" @click="$emit('deleteLocationByName', name)">delete</button>
   </div>
 </template>
 
@@ -32,5 +32,10 @@ export default {
 
 .delete:hover {
   background-color: #ffe8e8;
+}
+
+.location:hover {
+  background-color: #e8ffd9;
+  cursor: pointer;
 }
 </style>

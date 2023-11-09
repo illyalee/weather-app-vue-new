@@ -24,8 +24,8 @@ export default {
 
 <template>
   <div class="locations">
-    <LocationItem @showWeatherByName="showWeatherByName(location)" :name="location" v-for="location in locations" :key="location"
-                  @deleteLocationByName="deleteLocationByName(location)"/>
+    <LocationItem @showWeatherByName="showWeatherByName" :name="location" v-for="location in locations" :key="location"
+                  @deleteLocationByName="deleteLocationByName"/>
   </div>
 </template>
 
