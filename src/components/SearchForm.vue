@@ -9,23 +9,22 @@ export default {
   },
   emits: ['update:modelValue', 'showWeather'],
   computed: {
-    value: {
+    cityValue: {
       get() {
         return this.modelValue
       },
-      set(value) {
-        this.$emit('update:modelValue', value)
+      set(cityValue) {
+        this.$emit('update:modelValue', cityValue)
       }
     }
   }
-
 }
 </script>
 
 <template>
   <form @submit.prevent class="search_wrapper">
-    <input v-model="value" class="input" type="text" placeholder="Search City"/>
-    <button class="button" @click="$emit('showWeather', modelValue)">
+    <input v-model="cityValue" class="input" type="text" placeholder="Search City"/>
+    <button class="button" @click="$emit('showWeather')">
       <SearchImgItem/>
     </button>
   </form>

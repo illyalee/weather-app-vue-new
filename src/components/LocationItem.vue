@@ -6,15 +6,14 @@ export default {
       required: true
     }
   },
-  emits: ['deleteLocationByName'],
-  name: "LocationItem",
-
+  emits: ['deleteLocationByName', 'showWeatherByName'],
+  name: "LocationItem"
 }
 </script>
 
 <template>
   <div class="favorites">
-    <div class="location">{{ name }}</div>
+    <div class="location" @click="$emit('showWeatherByName', name)">{{ name }}</div>
     <button class="delete" @click="$emit('deleteLocationByName', name)">delete</button>
   </div>
 </template>
@@ -33,5 +32,10 @@ export default {
 
 .delete:hover {
   background-color: #ffe8e8;
+}
+
+.location:hover {
+  background-color: #e8ffd9;
+  cursor: pointer;
 }
 </style>

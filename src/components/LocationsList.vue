@@ -6,14 +6,17 @@ export default {
   components: {LocationItem},
   props: {
     locations: {
-      type: Array,
+      type: Set,
       required: true
     },
   },
-  emits: ['deleteLocation'],
+  emits: ['deleteLocation', 'showWeather'],
   methods: {
     deleteLocationByName(name) {
       this.$emit('deleteLocation', name)
+    },
+    showWeatherByName(name) {
+      this.$emit('showWeather', name)
     }
   }
 }
@@ -21,7 +24,7 @@ export default {
 
 <template>
   <div class="locations">
-    <LocationItem :name="location.name" v-for="location in locations" :key="location.name"
+    <LocationItem @showWeatherByName="showWeatherByName" :name="location" v-for="location in locations" :key="location"
                   @deleteLocationByName="deleteLocationByName"/>
   </div>
 </template>
